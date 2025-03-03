@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Pomodoro Timer</h1>
+        <h1>⌛Pomodoro Timer</h1>
         
         <!-- Timer Display -->
         <div id="timer">25:00</div>
@@ -17,24 +17,21 @@
         <progress id="progress-bar" value="100" max="100"></progress>
 
         <!-- Custom Session Input -->
-        <input type="number" id="custom-time" placeholder="Enter minutes" min="1">
-        
+        <input type="number" id="custom-time" placeholder="Enter minutes..." min="1">
+        <br>
         <!-- Control Buttons -->
         <button id="start">Start</button>
         <button id="pause">Pause</button>
         <button id="reset">Reset</button>
-
+        <br>
+        <br>
         <!-- Break Options -->
         <button id="short-break">Short Break (5 min)</button>
         <button id="long-break">Long Break (15 min)</button>
 
         <!-- Session Counter -->
         <p>Completed Sessions: <span id="session-count">0</span></p>
-
-        <!-- Dark Mode Toggle -->
-        <button id="toggle-theme">Toggle Dark Mode</button>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>

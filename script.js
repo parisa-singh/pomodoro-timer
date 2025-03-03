@@ -15,7 +15,6 @@ const resetButton = document.getElementById("reset");
 const shortBreakButton = document.getElementById("short-break");
 const longBreakButton = document.getElementById("long-break");
 const sessionCountDisplay = document.getElementById("session-count");
-const toggleThemeButton = document.getElementById("toggle-theme");
 
 // Function to Update Timer Display
 function updateDisplay() {
@@ -92,11 +91,6 @@ longBreakButton.addEventListener("click", () => {
     timeLeft = 15 * 60;
     updateDisplay();
     updateProgress();
-});
-
-// Function to Toggle Dark Mode
-toggleThemeButton.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
 });
 
 // Event Listeners for Buttons

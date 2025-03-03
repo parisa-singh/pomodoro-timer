@@ -5,17 +5,19 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
     margin: 0;
+    background: conic-gradient(from 0deg, #e76f51, #f4a261, #2a9d8f, #264653, #e76f51);
 }
 
 /* Timer Container */
 .container {
     text-align: center;
-    background: white;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.2);
+    background: rgb(0, 0, 0);
+    color: white;
+    width: 600px;
 }
 
 /* Timer Display */
@@ -52,11 +54,7 @@ button {
 #pause { background-color: #ffc107; color: white; }
 #reset { background-color: #dc3545; color: white; }
 #short-break { background-color: #007bff; color: white; }
-#long-break { background-color: #6f42c1; color: white; }
+#long-break { background-color: rgb(49, 1, 138); color: white; }
 #toggle-theme { background-color: black; color: white; }
 
-/* Dark Mode */
-.dark-mode {
-    background-color: #121212;
-    color: white;
-}
+
