@@ -1,57 +1,109 @@
-// variables to track timer state
-let timer; 
-let timeLeft = 25 * 60; 
-let isRunning = false; 
+// Variables
+let timer;
+let timeLeft = 25 * 60;
+let isRunning = false;
+let sessionCount = 0;
+const alarmSound = new Audio("alarm.mp3");
 
-// get references to the HTML elements
+// Get Elements
 const timerDisplay = document.getElementById("timer");
+const progressBar = document.getElementById("progress-bar");
+const customTimeInput = document.getElementById("custom-time");
 const startButton = document.getElementById("start");
 const pauseButton = document.getElementById("pause");
 const resetButton = document.getElementById("reset");
+const shortBreakButton = document.getElementById("short-break");
+const longBreakButton = document.getElementById("long-break");
+const sessionCountDisplay = document.getElementById("session-count");
+const toggleThemeButton = document.getElementById("toggle-theme");
 
-// function to update the timer display
+// Function to Update Timer Display
 function updateDisplay() {
     let minutes = Math.floor(timeLeft / 60);
     let seconds = timeLeft % 60;
-    
-    // format time to always show two digits (e.g., 25:00)
     timerDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 }
 
-// function to start the timer
+// Function to Update Progress Bar
+function updateProgress() {
+    let progress = (timeLeft / (25 * 60)) * 100;
+    progressBar.value = progress;
+}
+
+// Function to Start Timer
 function startTimer() {
-    if (!isRunning) { 
+    if (!isRunning) {
         isRunning = true;
         timer = setInterval(() => {
             if (timeLeft > 0) {
-                timeLeft--; 
-                updateDisplay(); 
+                timeLeft--;
+                updateDisplay();
+                updateProgress();
             } else {
-                clearInterval(timer); 
+                clearInterval(timer);
                 isRunning = false;
-                alert("Time's up!"); 
+                sessionCount++;
+                sessionCountDisplay.textContent = sessionCount;
+                alarmSound.play();
+                alert("Time's up!");
             }
-        }, 1000); 
+        }, 1000);
     }
 }
 
-// function to pause the timer
+// Function to Pause Timer
 function pauseTimer() {
-    clearInterval(timer); 
+    clearInterval(timer);
     isRunning = false;
 }
 
-// function to reset the timer
+// Function to Reset Timer
 function resetTimer() {
-    clearInterval(timer); 
+    clearInterval(timer);
     isRunning = false;
-    timeLeft = 25 * 60; 
-    updateDisplay(); 
+    timeLeft = 25 * 60;
+    updateDisplay();
+    updateProgress();
 }
 
-// event listeners for button clicks
+// Function to Set Custom Time
+customTimeInput.addEventListener("change", () => {
+    let customTime = parseInt(customTimeInput.value);
+    if (customTime > 0) {
+        timeLeft = customTime * 60;
+        updateDisplay();
+        updateProgress();
+    }
+});
+
+// Function to Start Short Break (5 min)
+shortBreakButton.addEventListener("click", () => {
+    clearInterval(timer);
+    isRunning = false;
+    timeLeft = 5 * 60;
+    updateDisplay();
+    updateProgress();
+});
+
+// Function to Start Long Break (15 min)
+longBreakButton.addEventListener("click", () => {
+    clearInterval(timer);
+    isRunning = false;
+    timeLeft = 15 * 60;
+    updateDisplay();
+    updateProgress();
+});
+
+// Function to Toggle Dark Mode
+toggleThemeButton.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
+
+// Event Listeners for Buttons
 startButton.addEventListener("click", startTimer);
 pauseButton.addEventListener("click", pauseTimer);
 resetButton.addEventListener("click", resetTimer);
 
+// Initialize Display
 updateDisplay();
+updateProgress();
