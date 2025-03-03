@@ -50,11 +50,71 @@ button {
     border-radius: 5px;
 }
 
-#start { background-color: #28a745; color: white; }
-#pause { background-color: #ffc107; color: white; }
-#reset { background-color: #dc3545; color: white; }
-#short-break { background-color: #007bff; color: white; }
-#long-break { background-color: rgb(49, 1, 138); color: white; }
-#toggle-theme { background-color: black; color: white; }
+#start { 
+    background: transparent;
+    border: 2px solid #28a745;
+    color: white;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+#start:hover {
+    background: #28a745;
+    color: #fff;
+    transform: rotate(5deg);
+}
+
+#pause { 
+    background: transparent;
+    border: 2px solid #ffc107;
+    color: white;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+#pause:hover {
+    background: #ffc107;
+    color: #fff;
+    transform: rotate(5deg);
+}
+
+#reset { 
+    background: transparent;
+    border: 2px solid #dc3545;
+    color: white;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+#reset:hover {
+    background: #dc3545;
+    color: #fff;
+    transform: rotate(5deg);
+}
 
 
+#short-break { 
+    background: transparent;
+    border: 2px solid #007bff;
+    color: white;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+#short-break:hover {
+    background: #007bff;
+    color: #fff;
+}
+
+#long-break { 
+    background: transparent;
+    border: 2px solid #31018a;
+    color: white;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+}
+
+#long-break:hover {
+    background: #31018a;
+    color: #fff;
+}
